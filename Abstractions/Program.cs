@@ -23,7 +23,8 @@ namespace Abstractions
                 new Abstractions.MoreAbstract.AddAppCommand(),
                 new Abstractions.MoreAbstract.SubtractAppCommand(),
                 new Abstractions.MoreAbstract.MultiplyAppCommand(),
-                new Abstractions.MoreAbstract.DivideAppCommand()
+                new Abstractions.MoreAbstract.DivideAppCommand(),
+                new Abstractions.MoreAbstract.ExponentiationAppCommand()
             };
 
             var exitLoop = false;
@@ -68,17 +69,18 @@ namespace Abstractions
         {
             Console.WriteLine("AppCommand Test Harness:");
             Console.WriteLine("---------------------------------------");
-            Console.WriteLine("1) FullyConcrete (add)");
-            Console.WriteLine("2) MultipleFullyConcrete (add)");
-            Console.WriteLine("3) MultipleFullyConcrete (subrtract)");
-            Console.WriteLine("4) MultipleFullyConcrete (multiply)");
-            Console.WriteLine("5) MultipleFullyConcrete (divide)");
-            Console.WriteLine("6) MoreAbstract (add)");
-            Console.WriteLine("7) MoreAbstract (subtract)");
-            Console.WriteLine("8) MoreAbstract (multiply)");
-            Console.WriteLine("9) MoreAbstract (divide)");
+            Console.WriteLine(" 1) FullyConcrete (add)");
+            Console.WriteLine(" 2) MultipleFullyConcrete (add)");
+            Console.WriteLine(" 3) MultipleFullyConcrete (subrtract)");
+            Console.WriteLine(" 4) MultipleFullyConcrete (multiply)");
+            Console.WriteLine(" 5) MultipleFullyConcrete (divide)");
+            Console.WriteLine(" 6) MoreAbstract (add)");
+            Console.WriteLine(" 7) MoreAbstract (subtract)");
+            Console.WriteLine(" 8) MoreAbstract (multiply)");
+            Console.WriteLine(" 9) MoreAbstract (divide)");
+            Console.WriteLine("10) MoreAbstract (exponentiation)");
             Console.WriteLine();
-            Console.WriteLine("0) Exit");
+            Console.WriteLine(" 0) Exit");
             Console.WriteLine("---------------------------------------");
             Console.Write("Make your choice: ");
         }

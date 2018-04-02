@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
-    <Folder Include="Enumerations\" />
     <Folder Include="Attributes\" />
   </ItemGroup>
 </Project>

@@ -13,6 +13,7 @@
   <ItemGroup>
     <Folder Include="Calculations\" />
     <Folder Include="SourceData\" />
+    <Folder Include="Providers\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="SourceData\Numerics.txt" />
