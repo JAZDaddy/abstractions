@@ -1,0 +1,57 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions", "Abstractions\Abstractions.csproj", "{1DDE848A-425D-43D0-921C-5BCAB176576F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions.FullyConcrete", "Abstractions.FullyConcrete\Abstractions.FullyConcrete.csproj", "{62D590DC-A59A-4107-81C9-A253078048AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions.Common", "Abstractions.Common\Abstractions.Common.csproj", "{6F514DDF-128F-45D6-AFA6-10BF0B9D8932}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions.MultipleFullyConcrete", "MultipleFullyConcrete\Abstractions.MultipleFullyConcrete.csproj", "{E2E018F6-1569-46CB-B1E3-C2360F51F4EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions.MoreAbstract", "Abstractions.MoreAbstract\Abstractions.MoreAbstract.csproj", "{5CF016B6-4245-4448-9BA0-8FE3D7031C3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DDE848A-425D-43D0-921C-5BCAB176576F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDE848A-425D-43D0-921C-5BCAB176576F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DDE848A-425D-43D0-921C-5BCAB176576F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DDE848A-425D-43D0-921C-5BCAB176576F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62D590DC-A59A-4107-81C9-A253078048AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62D590DC-A59A-4107-81C9-A253078048AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62D590DC-A59A-4107-81C9-A253078048AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62D590DC-A59A-4107-81C9-A253078048AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F514DDF-128F-45D6-AFA6-10BF0B9D8932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F514DDF-128F-45D6-AFA6-10BF0B9D8932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F514DDF-128F-45D6-AFA6-10BF0B9D8932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F514DDF-128F-45D6-AFA6-10BF0B9D8932}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2E018F6-1569-46CB-B1E3-C2360F51F4EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2E018F6-1569-46CB-B1E3-C2360F51F4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2E018F6-1569-46CB-B1E3-C2360F51F4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2E018F6-1569-46CB-B1E3-C2360F51F4EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CF016B6-4245-4448-9BA0-8FE3D7031C3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF016B6-4245-4448-9BA0-8FE3D7031C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CF016B6-4245-4448-9BA0-8FE3D7031C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CF016B6-4245-4448-9BA0-8FE3D7031C3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.scope = text/x-csharp
+		$0.TextStylePolicy = $4
+		$4.FileWidth = 80
+		$4.TabsToSpaces = True
+		$4.scope = text/plain
+		$0.StandardHeader = $5
+		$0.VersionControlPolicy = $6
+	EndGlobalSection
+EndGlobal
