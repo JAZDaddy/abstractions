@@ -9,11 +9,17 @@ namespace Abstractions
         static async Task Main(string[] args)
         {
             var appCommands = new Abstractions.Common.Interfaces.IAppCommand[] {
+                // Our first implementation: very purpose-built
                 new Abstractions.FullyConcrete.AppCommand(),
+                // Our second-generation implementations: clipboard inherited code 
+                // from the original AppCommand, now in four delicious flavors
                 new Abstractions.MultipleFullyConcrete.AddAppCommand(),
                 new Abstractions.MultipleFullyConcrete.SubtractAppCommand(),
                 new Abstractions.MultipleFullyConcrete.MultiplyAppCommand(),
                 new Abstractions.MultipleFullyConcrete.DivideAppCommand(),
+                // The third generation: recognizing that we had a lot of
+                // duplicate code, the implementations leverage an abstract base
+                // class and an ICalculation Strategy Pattern implementation
                 new Abstractions.MoreAbstract.AddAppCommand(),
                 new Abstractions.MoreAbstract.SubtractAppCommand(),
                 new Abstractions.MoreAbstract.MultiplyAppCommand(),
