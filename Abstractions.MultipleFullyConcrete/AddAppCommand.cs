@@ -31,7 +31,7 @@ namespace Abstractions.MultipleFullyConcrete
                 Console.WriteLine(s);
             }
 
-            using (var textStream = assembly.GetManifestResourceStream("Abstractions.MultipleFullyConcrete.Numerics.txt"))
+            using (var textStream = assembly.GetManifestResourceStream("Abstractions.MultipleFullyConcrete.SourceData.Numerics.txt"))
             {
                 using (var streamReader = new StreamReader(textStream))
                 {

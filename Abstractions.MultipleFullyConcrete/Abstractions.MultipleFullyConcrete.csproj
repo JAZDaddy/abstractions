@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <BaseDirectory>..\Abstractions.MultipleFullyConcrete</BaseDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Abstractions.Common\Abstractions.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SourceData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="AddAppCommand.cs" />
+    <Compile Remove="DivideAppCommand.cs" />
+    <Compile Remove="MultiplyAppCommand.cs" />
+    <Compile Remove="SubtractAppCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Abstractions.MultipleFullyConcrete\AddAppCommand.cs" />
+    <Compile Include="..\Abstractions.MultipleFullyConcrete\DivideAppCommand.cs" />
+    <Compile Include="..\Abstractions.MultipleFullyConcrete\MultiplyAppCommand.cs" />
+    <Compile Include="..\Abstractions.MultipleFullyConcrete\SubtractAppCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Abstractions.MultipleFullyConcrete\SourceData\Numerics.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="SourceData\Numerics.txt" />
+  </ItemGroup>
+</Project>
