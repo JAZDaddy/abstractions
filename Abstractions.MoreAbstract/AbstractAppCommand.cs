@@ -12,7 +12,7 @@ namespace Abstractions.MoreAbstract
     {
         protected ICalculation Calculation { get; set; }
 
-        public async Task<string> Exec(params string[] args)
+        public async Task<string> Exec()
         {
             var sb = new System.Text.StringBuilder();
 
@@ -38,11 +38,6 @@ namespace Abstractions.MoreAbstract
 
             // return the results as a string
             return sb.ToString();
-        }
-
-        public virtual string Usage()
-        {
-            return "No args values are required; any supplied values will be ignored.";
         }
     }
 }

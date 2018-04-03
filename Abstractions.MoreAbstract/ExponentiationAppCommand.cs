@@ -13,14 +13,14 @@ namespace Abstractions.MoreAbstract
 
         public ExponentiationAppCommand()
         {
-            NumericFileProvider = new NumericFileProvider();
+            NumericFileProvider = new NumericFileProvider(this.GetType().Assembly, "Abstractions.MoreAbstract.SourceData.Numerics.txt");
             Calculation = new ExponentiationCalculation();
         }
 
-        public async Task<string> Exec(params string[] args)
+        public async Task<string> Exec()
         {
             var sb = new System.Text.StringBuilder();
-            var numericFile = await NumericFileProvider.GetNumericFile();
+            var numericFile = await NumericFileProvider.GetNumericFileAsync();
 
             foreach (var item in numericFile.data)
             {
@@ -28,11 +28,6 @@ namespace Abstractions.MoreAbstract
             }
 
             return sb.ToString();
-        }
-
-        public string Usage()
-        {
-            return "The ExponentiationCalculation takes no arguments; any supplied will be ignored.";
         }
     }
 }

@@ -6,6 +6,15 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
-    <Folder Include="Attributes\" />
+    <Folder Include="SourceData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="SourceData\Numerics.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SourceData\Numerics.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Attributes\AppCommandAttribute.cs" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Abstractions.Common;
 using Abstractions.Common.Interfaces;
@@ -16,18 +18,30 @@ namespace Abstractions.MultipleFullyConcrete
         /// Exec the specified args.
         /// </summary>
         /// <returns>A string containing the results of the execution</returns>
-        /// <param name="args">Arguments. This implementation does not require specific
-        /// parameters, and any supplied parameters will be ignored.</param>
-        public async Task<string> Exec(params string[] args)
+        public async Task<string> Exec()
         {
             var sb = new System.Text.StringBuilder();
 
             // get some data from our JSON data store
             var assembly = this.GetType().Assembly;
-            var textStream = assembly.GetManifestResourceStream("Abstractions.MultipleFullyConcrete.SourceData.Numerics.txt");
-            var deserializer = new JsonSerializer();
-            var jsonReader = new JsonTextReader(new StreamReader(textStream));
-            var resultObject = deserializer.Deserialize<NumericFile>(jsonReader);
+
+            NumericFile resultObject = null;
+            foreach (var s in assembly.GetManifestResourceNames())
+            {
+                Console.WriteLine(s);
+            }
+
+            using (var textStream = assembly.GetManifestResourceStream("Abstractions.MultipleFullyConcrete.Numerics.txt"))
+            {
+                using (var streamReader = new StreamReader(textStream))
+                {
+                    using (var jsonReader = new JsonTextReader(streamReader))
+                    {
+                        var deserializer = new JsonSerializer();
+                        resultObject = deserializer.Deserialize<NumericFile>(jsonReader);
+                    }
+                }
+            }
 
             // load up a list of values
             var itemList = new List<(double x, double y)>();
@@ -45,15 +59,6 @@ namespace Abstractions.MultipleFullyConcrete
 
             // return the results as a string
             return sb.ToString();
-        }
-
-        /// <summary>
-        /// Usage describes the arguments and expected return this instance.
-        /// </summary>
-        /// <returns>The usage details.</returns>
-        public string Usage()
-        {
-            return "No args values are required; any supplied values will be ignored.";
         }
     }
 }

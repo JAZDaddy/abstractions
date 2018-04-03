@@ -3,7 +3,6 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Abstractions.Common;
-using Abstractions.Common.Attributes;
 using Abstractions.Common.Interfaces;
 using Newtonsoft.Json;
 
@@ -16,16 +15,13 @@ namespace Abstractions.FullyConcrete
     /// a simple action based on a set of input parameters, and describe their parameter
     /// expectations with a Usage method.
     /// </summary>
-    [AppCommand("FullyConcrete")]
     public class AppCommand : IAppCommand
     {
         /// <summary>
         /// Exec the specified args.
         /// </summary>
         /// <returns>A string containing the results of the execution</returns>
-        /// <param name="args">Arguments. This implementation does not require specific
-        /// parameters, and any supplied parameters will be ignored.</param>
-        public async Task<string> Exec(params string[] args)
+        public async Task<string> Exec()
         {
             var sb = new System.Text.StringBuilder();
 
@@ -52,15 +48,6 @@ namespace Abstractions.FullyConcrete
 
             // return the results as a string
             return sb.ToString();
-        }
-
-        /// <summary>
-        /// Usage describes the arguments and expected return this instance.
-        /// </summary>
-        /// <returns>The usage details.</returns>
-        public string Usage()
-        {
-            return "No args values are required; any supplied values will be ignored.";
         }
     }
 }

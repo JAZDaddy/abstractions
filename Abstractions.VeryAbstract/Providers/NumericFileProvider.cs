@@ -5,7 +5,7 @@ using Abstractions.Common;
 using Abstractions.Common.Interfaces;
 using Newtonsoft.Json;
 
-namespace Abstractions.MoreAbstract.Providers
+namespace Abstractions.VeryAbstract.Providers
 {
     public class NumericFileProvider : INumericFileProvider
     {

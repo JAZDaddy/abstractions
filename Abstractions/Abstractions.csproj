@@ -16,5 +16,6 @@
     <ProjectReference Include="..\Abstractions.FullyConcrete\Abstractions.FullyConcrete.csproj" />
     <ProjectReference Include="..\MultipleFullyConcrete\Abstractions.MultipleFullyConcrete.csproj" />
     <ProjectReference Include="..\Abstractions.MoreAbstract\Abstractions.MoreAbstract.csproj" />
+    <ProjectReference Include="..\Abstractions.VeryAbstract\Abstractions.VeryAbstract.csproj" />
   </ItemGroup>
 </Project>

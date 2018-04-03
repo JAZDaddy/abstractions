@@ -5,6 +5,7 @@ namespace Abstractions.Common.Interfaces
 {
     public interface INumericFileProvider
     {
-        Task<NumericFile> GetNumericFile();
+        Task<NumericFile> GetNumericFileAsync();
+        Task<NumericFile> GetNumericFileAsync(System.Reflection.Assembly resourceAssembly, string resourceId);
     }
 }

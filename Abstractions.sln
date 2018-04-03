@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions.MultipleFullyC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions.MoreAbstract", "Abstractions.MoreAbstract\Abstractions.MoreAbstract.csproj", "{5CF016B6-4245-4448-9BA0-8FE3D7031C3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions.VeryAbstract", "Abstractions.VeryAbstract\Abstractions.VeryAbstract.csproj", "{35C86758-1708-4397-A7F6-3A53B0E2EFF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{5CF016B6-4245-4448-9BA0-8FE3D7031C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CF016B6-4245-4448-9BA0-8FE3D7031C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CF016B6-4245-4448-9BA0-8FE3D7031C3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35C86758-1708-4397-A7F6-3A53B0E2EFF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C86758-1708-4397-A7F6-3A53B0E2EFF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C86758-1708-4397-A7F6-3A53B0E2EFF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C86758-1708-4397-A7F6-3A53B0E2EFF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
