@@ -38,4 +38,6 @@ Thumbs.db
 
 # dotCover
 *.dotCover
-/.vs/Abstractions/v15/Server/sqlite3
+
+# Visual Studio
+/.vs/

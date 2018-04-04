@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -26,11 +27,25 @@ namespace Abstractions.FullyConcrete
             var sb = new System.Text.StringBuilder();
 
             // get some data from our JSON data store
-            var assembly = typeof(Abstractions.FullyConcrete.AppCommand).GetTypeInfo().Assembly;
-            var textStream = assembly.GetManifestResourceStream("Abstractions.FullyConcrete.SourceData.Numerics.txt");
-            var deserializer = new JsonSerializer();
-            var jsonReader = new JsonTextReader(new StreamReader(textStream));
-            var resultObject = deserializer.Deserialize<NumericFile>(jsonReader);
+            var assembly = this.GetType().Assembly;
+
+            NumericFile resultObject = null;
+            foreach (var s in assembly.GetManifestResourceNames())
+            {
+                Console.WriteLine(s);
+            }
+
+            using (var textStream = assembly.GetManifestResourceStream("Abstractions.FullyConcrete.SourceData.Numerics.txt"))
+            {
+                using (var streamReader = new StreamReader(textStream))
+                {
+                    using (var jsonReader = new JsonTextReader(streamReader))
+                    {
+                        var deserializer = new JsonSerializer();
+                        resultObject = deserializer.Deserialize<NumericFile>(jsonReader);
+                    }
+                }
+            }
 
             // load up a list of values
             var itemList = new List<(double x, double y)>();
