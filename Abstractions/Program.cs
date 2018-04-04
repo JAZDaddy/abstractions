@@ -67,7 +67,7 @@ namespace Abstractions
 
                     if (appCommand != null)
                     {
-                        var retval = await appCommand.Exec();
+                        var retval = await appCommand.ExecAsync();
                         Console.WriteLine($"appCommand output:\r\n{retval}");
                     }
                 }

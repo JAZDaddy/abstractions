@@ -5,14 +5,14 @@ namespace Abstractions.MoreAbstract.Calculations
 {
     public class SubtractCalculation : ICalculation
     {
-        public async Task<double> Calculate(double x, double y)
+        public async Task<double> CalculateAsync(double x, double y)
         {
             return await Task.Run(() => x - y);
         }
 
-        public async Task<string> GetCalculationResult(double x, double y)
+        public async Task<string> GetCalculationResultAsync(double x, double y)
         {
-            return $"The result of {x} - {y} = {await Calculate(x, y)}.";
+            return $"The result of {x} - {y} = {await CalculateAsync(x, y)}.";
         }
     }
 }

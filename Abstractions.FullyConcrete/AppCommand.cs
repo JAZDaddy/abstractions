@@ -21,7 +21,7 @@ namespace Abstractions.FullyConcrete
         /// Exec the specified args.
         /// </summary>
         /// <returns>A string containing the results of the execution</returns>
-        public async Task<string> Exec()
+        public async Task<string> ExecAsync()
         {
             var sb = new System.Text.StringBuilder();
 

@@ -12,7 +12,7 @@ namespace Abstractions.MoreAbstract
     {
         protected ICalculation Calculation { get; set; }
 
-        public async Task<string> Exec()
+        public async Task<string> ExecAsync()
         {
             var sb = new System.Text.StringBuilder();
 
@@ -33,7 +33,7 @@ namespace Abstractions.MoreAbstract
             // process the values
             foreach (var item in itemList)
             {
-                sb.AppendLine(await Calculation.GetCalculationResult(item.x, item.y));
+                sb.AppendLine(await Calculation.GetCalculationResultAsync(item.x, item.y));
             }
 
             // return the results as a string

@@ -15,13 +15,13 @@ namespace Abstractions.VeryAbstract
             NumericFileProvider = numericFileProvider;
         }
 
-        public async Task<string> Exec()
+        public async Task<string> ExecAsync()
         {
             var sb = new System.Text.StringBuilder();
             var numericFile = await NumericFileProvider.GetNumericFileAsync();
             foreach (var item in numericFile.data)
             {
-                sb.AppendLine(await Calculation.GetCalculationResult(item.x, item.y));
+                sb.AppendLine(await Calculation.GetCalculationResultAsync(item.x, item.y));
             }
             return sb.ToString();
         }
