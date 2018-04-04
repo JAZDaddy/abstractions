@@ -1,11 +1,17 @@
-﻿using System;
+﻿using Abstractions.Common.Interfaces;
+using System;
+
 namespace Abstractions.MoreAbstract
 {
     public class AddAppCommand : AbstractAppCommand
     {
         public AddAppCommand()
         {
-            this.Calculation = new Calculations.AddCalculation();
+        }
+
+        protected override ICalculation GetCalculation()
+        {
+            return new Calculations.AddCalculation();
         }
     }
 }

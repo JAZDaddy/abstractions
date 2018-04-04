@@ -10,7 +10,7 @@ namespace Abstractions.MoreAbstract
 {
     public abstract class AbstractAppCommand : IAppCommand
     {
-        protected ICalculation Calculation { get; set; }
+        protected abstract ICalculation GetCalculation();
 
         public async Task<string> ExecAsync()
         {
@@ -33,7 +33,7 @@ namespace Abstractions.MoreAbstract
             // process the values
             foreach (var item in itemList)
             {
-                sb.AppendLine(await Calculation.GetCalculationResultAsync(item.x, item.y));
+                sb.AppendLine(await GetCalculation().GetCalculationResultAsync(item.x, item.y));
             }
 
             // return the results as a string
