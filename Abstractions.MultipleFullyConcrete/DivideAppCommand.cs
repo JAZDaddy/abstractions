@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace Abstractions.MultipleFullyConcrete
 {
     /// <summary>
-    /// Subtract app command.
+    /// Divide app command.
     /// </summary>
     public class DivideAppCommand : IAppCommand
     {
