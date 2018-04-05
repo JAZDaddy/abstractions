@@ -4,8 +4,10 @@ using Abstractions.Common.Interfaces;
 
 namespace Abstractions.VeryAbstract.Calculations
 {
-    public class ExponentiationCalculation : ICalculation
+    public class ExponentiationCalculation : ICalculation, IDescribable
     {
+        public string Description => "The ExponentiationCalculation is IDescribable.";
+
         public async Task<double> CalculateAsync(double x, double y)
         {
             return await Task.Run(() => Math.Pow(x, y));

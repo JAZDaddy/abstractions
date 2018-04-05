@@ -21,6 +21,10 @@ namespace Abstractions.VeryAbstract
             var numericFile = await NumericFileProvider.GetNumericFileAsync();
             foreach (var item in numericFile.data)
             {
+                if (Calculation is IDescribable describableCalculation)
+                {
+                    sb.AppendLine($"The calculation says: {describableCalculation.Description}");
+                }
                 sb.AppendLine(await Calculation.GetCalculationResultAsync(item.x, item.y));
             }
             return sb.ToString();
