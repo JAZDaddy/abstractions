@@ -15,6 +15,7 @@ namespace Abstractions.DI
                 new TypedParameter(typeof(System.Reflection.Assembly), typeof(Abstractions.Common.NumericFile).Assembly),
                 new TypedParameter(typeof(string), "Abstractions.Common.SourceData.Numerics.txt"));
 
+            // TODO: You must pass the ICalculation to Resolve, since there is more than one type register to resolve to the ICalculation
             var appCommand = scope.Resolve<IAppCommand>(new TypedParameter(typeof(ICalculation), calculation));
             return appCommand;
         }
