@@ -3,7 +3,7 @@ using Abstractions.Common.Interfaces;
 
 namespace Abstractions.MoreAbstract.Calculations
 {
-    public class AddCalculation : ICalculation
+    public class AddCalculation : ICalculation<double>
     {
         public async Task<double> CalculateAsync(double x, double y)
         {

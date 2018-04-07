@@ -6,9 +6,9 @@ using Abstractions.MoreAbstract.Providers;
 
 namespace Abstractions.MoreAbstract
 {
-    public class ExponentiationAppCommand : IAppCommand
+    public class ExponentiationAppCommand : IAppCommand<double>
     {
-        protected ICalculation Calculation { get; set; }
+        protected ICalculation<double> Calculation { get; set; }
         protected INumericFileProvider NumericFileProvider { get; set;  }
 
         public ExponentiationAppCommand()

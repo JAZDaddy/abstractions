@@ -10,7 +10,7 @@ namespace Abstractions.MultipleFullyConcrete
     /// <summary>
     /// Subtract app command.
     /// </summary>
-    public class SubtractAppCommand : IAppCommand
+    public class SubtractAppCommand : IAppCommand<double>
     {
         /// <summary>
         /// Exec the specified args.

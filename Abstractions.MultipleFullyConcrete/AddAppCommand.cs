@@ -12,7 +12,7 @@ namespace Abstractions.MultipleFullyConcrete
     /// <summary>
     /// Addition app command.
     /// </summary>
-    public class AddAppCommand : IAppCommand
+    public class AddAppCommand : IAppCommand<double>
     {
         /// <summary>
         /// Exec the specified args.

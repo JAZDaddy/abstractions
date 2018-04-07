@@ -1,12 +1,10 @@
 ﻿using Autofac;
 using System;
-using Abstractions.Common;
 using Abstractions.VeryAbstract;
 using Abstractions.Common.Interfaces;
 using Abstractions.VeryAbstract.Calculations;
 using Abstractions.Common.Constants;
 using Abstractions.VeryAbstract.Providers;
-using Autofac.Core;
 using System.Threading.Tasks;
 
 namespace Abstractions.DI
@@ -19,13 +17,22 @@ namespace Abstractions.DI
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<AddCalculation>().Named<ICalculation>(CalculationTypeNames.Add).InstancePerLifetimeScope();
-            builder.RegisterType<SubtractCalculation>().Named<ICalculation>(CalculationTypeNames.Subtract).InstancePerLifetimeScope();
-            builder.RegisterType<MultiplyCalculation>().Named<ICalculation>(CalculationTypeNames.Multiply).InstancePerLifetimeScope();
-            builder.RegisterType<DivideCalculation>().Named<ICalculation>(CalculationTypeNames.Divide).InstancePerLifetimeScope();
-            builder.RegisterType<ExponentiationCalculation>().Named<ICalculation>(CalculationTypeNames.Exponentiation).InstancePerLifetimeScope();
-            builder.RegisterType<NumericFileProvider>().As<INumericFileProvider>().InstancePerLifetimeScope();
-            builder.RegisterType<AppCommand>().As<IAppCommand>().InstancePerDependency();
+            #region Register Calculations
+            builder.RegisterType<AddCalculation>().Named<ICalculation<double>>(CalculationTypeNames.Add).InstancePerLifetimeScope();
+            builder.RegisterType<SubtractCalculation>().Named<ICalculation<double>>(CalculationTypeNames.Subtract).InstancePerLifetimeScope();
+            builder.RegisterType<MultiplyCalculation>().Named<ICalculation<double>>(CalculationTypeNames.Multiply).InstancePerLifetimeScope();
+            builder.RegisterType<DivideCalculation>().Named<ICalculation<double>>(CalculationTypeNames.Divide).InstancePerLifetimeScope();
+            builder.RegisterType<ExponentiationCalculation>().Named<ICalculation<double>>(CalculationTypeNames.Exponentiation).InstancePerLifetimeScope();
+            builder.RegisterType<ConcatenateCalculation>().As<ICalculation<string>>().InstancePerLifetimeScope();
+            #endregion
+            #region Register PairwiseFileProviders
+            builder.RegisterType<PairwiseNumericFileProvider>().As<IPairwiseFileProvider<double>>().InstancePerDependency();
+            builder.RegisterType<PairwiseStringFileProvider>().As<IPairwiseFileProvider<string>>().InstancePerDependency();
+            #endregion
+            #region Register AppCommand variants
+            builder.RegisterType<AppCommand<double>>().As<IAppCommand<double>>().InstancePerDependency();
+            builder.RegisterType<AppCommand<string>>().As<IAppCommand<string>>().InstancePerDependency();
+            #endregion
 
             Container = builder.Build();
         }
@@ -46,14 +53,15 @@ namespace Abstractions.DI
                     if (int.TryParse(input, out var menuSelection))
                     {
                         string typeName = string.Empty;
-
+                        
                         string[] typeNameMap =
                         {
                             CalculationTypeNames.Add,
                             CalculationTypeNames.Subtract,
                             CalculationTypeNames.Multiply,
                             CalculationTypeNames.Divide,
-                            CalculationTypeNames.Exponentiation
+                            CalculationTypeNames.Exponentiation,
+                            CalculationTypeNames.Concatenation
                         };
 
                         if (menuSelection > 0 && menuSelection <= typeNameMap.Length)
@@ -64,24 +72,27 @@ namespace Abstractions.DI
                         {
                             typeName = "STOP";
                         }
-
-                        if (!string.IsNullOrEmpty(typeName))
-                        {
-                            if (typeName == "STOP")
-                            {
-                                Console.WriteLine("Fine. Be that way.");
-                                exitLoop = true;
-                            }
-                            else
-                            {
-                                var appCommand = AppCommandFactory.CreateAppCommand(scope, typeName);
-                                var retval = await appCommand.ExecAsync();
-                                Console.WriteLine($"appCommand output:\r\n{retval}");
-                            }
-                        }
                         else
                         {
                             Console.WriteLine("Wut?");
+                        }
+
+                        if (typeName == "STOP")
+                        {
+                            Console.WriteLine("Fine. Be that way.");
+                            exitLoop = true;
+                        }
+                        else if (typeName == CalculationTypeNames.Concatenation)
+                        {
+                            var appCommand = AppCommandFactory.GetAppCommand<string>(scope, typeName);
+                            var retval = await appCommand.ExecAsync();
+                            Console.WriteLine($"appCommand output:\r\n{retval}");
+                        }
+                        else if (typeName != string.Empty)
+                        {
+                            var appCommand = AppCommandFactory.GetAppCommand<double>(scope, typeName);
+                            var retval = await appCommand.ExecAsync();
+                            Console.WriteLine($"appCommand output:\r\n{retval}");
                         }
                     }
                 }
@@ -96,6 +107,7 @@ namespace Abstractions.DI
             Console.WriteLine(" 3) VeryAbstract (multiply)");
             Console.WriteLine(" 4) VeryAbstract (divide)");
             Console.WriteLine(" 5) VeryAbstract (exponentiation)");
+            Console.WriteLine(" 6) VeryAbstract (string concatenation)");
             Console.WriteLine();
             Console.WriteLine(" 0) Exit");
             Console.WriteLine("---------------------------------------");

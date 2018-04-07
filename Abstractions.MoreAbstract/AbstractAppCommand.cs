@@ -8,9 +8,9 @@ using Newtonsoft.Json;
 
 namespace Abstractions.MoreAbstract
 {
-    public abstract class AbstractAppCommand : IAppCommand
+    public abstract class AbstractAppCommand<T, D> : IAppCommand<T> where D: IPairwiseValueFile<T>, new()
     {
-        protected abstract ICalculation GetCalculation();
+        protected abstract ICalculation<T> GetCalculation();
 
         public async Task<string> ExecAsync()
         {
@@ -18,22 +18,19 @@ namespace Abstractions.MoreAbstract
 
             // get some data from our JSON data store
             var assembly = this.GetType().Assembly;
-            var textStream = assembly.GetManifestResourceStream("Abstractions.MoreAbstract.SourceData.Numerics.txt");
-            var deserializer = new JsonSerializer();
-            var jsonReader = new JsonTextReader(new StreamReader(textStream));
-            var resultObject = deserializer.Deserialize<NumericFile>(jsonReader);
-
-            // load up a list of values
-            var itemList = new List<(double x, double y)>();
-            foreach (var item in resultObject.data)
+            using (var textStream = assembly.GetManifestResourceStream("Abstractions.MoreAbstract.SourceData.Numerics.txt"))
             {
-                itemList.Add((item.x, item.y));
-            }
+                var deserializer = new JsonSerializer();
+                using (var jsonReader = new JsonTextReader(new StreamReader(textStream)))
+                {
+                    var resultObject = deserializer.Deserialize<D>(jsonReader);
 
-            // process the values
-            foreach (var item in itemList)
-            {
-                sb.AppendLine(await GetCalculation().GetCalculationResultAsync(item.x, item.y));
+                    // process the values
+                    foreach (var item in resultObject.data)
+                    {
+                        sb.AppendLine(await GetCalculation().GetCalculationResultAsync(item.x, item.y));
+                    }
+                }
             }
 
             // return the results as a string

@@ -8,7 +8,7 @@ namespace Abstractions
     {
         static async Task Main(string[] args)
         {
-            var appCommands = new Abstractions.Common.Interfaces.IAppCommand[] {
+            var appCommands = new Abstractions.Common.Interfaces.IAppCommand<double>[] {
                 #region FullyConcrete
                 // Our first implementation: very purpose-built
                 new Abstractions.FullyConcrete.AppCommand(),
@@ -32,11 +32,11 @@ namespace Abstractions
                 new Abstractions.MoreAbstract.ExponentiationAppCommand(),
                 #endregion
                 #region VeryAbstract
-                new Abstractions.VeryAbstract.AppCommand(new Abstractions.VeryAbstract.Calculations.AddCalculation(), new Abstractions.VeryAbstract.Providers.NumericFileProvider(typeof(Abstractions.Common.NumericFile).Assembly, "Abstractions.Common.SourceData.Numerics.txt")),
-                new Abstractions.VeryAbstract.AppCommand(new Abstractions.VeryAbstract.Calculations.SubtractCalculation(), new Abstractions.VeryAbstract.Providers.NumericFileProvider(typeof(Abstractions.Common.NumericFile).Assembly, "Abstractions.Common.SourceData.Numerics.txt")),
-                new Abstractions.VeryAbstract.AppCommand(new Abstractions.VeryAbstract.Calculations.MultiplyCalculation(), new Abstractions.VeryAbstract.Providers.NumericFileProvider(typeof(Abstractions.Common.NumericFile).Assembly, "Abstractions.Common.SourceData.Numerics.txt")),
-                new Abstractions.VeryAbstract.AppCommand(new Abstractions.VeryAbstract.Calculations.DivideCalculation(), new Abstractions.VeryAbstract.Providers.NumericFileProvider(typeof(Abstractions.Common.NumericFile).Assembly, "Abstractions.Common.SourceData.Numerics.txt")),
-                new Abstractions.VeryAbstract.AppCommand(new Abstractions.VeryAbstract.Calculations.ExponentiationCalculation(), new Abstractions.VeryAbstract.Providers.NumericFileProvider(typeof(Abstractions.Common.NumericFile).Assembly, "Abstractions.Common.SourceData.Numerics.txt"))
+                new Abstractions.VeryAbstract.AppCommand<double>(new Abstractions.VeryAbstract.Calculations.AddCalculation(), new Abstractions.VeryAbstract.Providers.PairwiseNumericFileProvider(typeof(Abstractions.Common.NumericFile).Assembly, "Abstractions.Common.SourceData.Numerics.txt")),
+                new Abstractions.VeryAbstract.AppCommand<double>(new Abstractions.VeryAbstract.Calculations.SubtractCalculation(), new Abstractions.VeryAbstract.Providers.PairwiseNumericFileProvider(typeof(Abstractions.Common.NumericFile).Assembly, "Abstractions.Common.SourceData.Numerics.txt")),
+                new Abstractions.VeryAbstract.AppCommand<double>(new Abstractions.VeryAbstract.Calculations.MultiplyCalculation(), new Abstractions.VeryAbstract.Providers.PairwiseNumericFileProvider(typeof(Abstractions.Common.NumericFile).Assembly, "Abstractions.Common.SourceData.Numerics.txt")),
+                new Abstractions.VeryAbstract.AppCommand<double>(new Abstractions.VeryAbstract.Calculations.DivideCalculation(), new Abstractions.VeryAbstract.Providers.PairwiseNumericFileProvider(typeof(Abstractions.Common.NumericFile).Assembly, "Abstractions.Common.SourceData.Numerics.txt")),
+                new Abstractions.VeryAbstract.AppCommand<double>(new Abstractions.VeryAbstract.Calculations.ExponentiationCalculation(), new Abstractions.VeryAbstract.Providers.PairwiseNumericFileProvider(typeof(Abstractions.Common.NumericFile).Assembly, "Abstractions.Common.SourceData.Numerics.txt"))
                 #endregion
             };
 
@@ -49,7 +49,7 @@ namespace Abstractions
 
                 if (int.TryParse(input, out var menuSelection))
                 {
-                    IAppCommand appCommand = null;
+                    IAppCommand<double> appCommand = null;
 
                     if (menuSelection > 0 && menuSelection < appCommands.Length + 1)
                     {

@@ -12,10 +12,6 @@
     <ProjectReference Include="..\Abstractions.Common\Abstractions.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Calculations\" />
-    <Folder Include="Providers\" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 </Project>

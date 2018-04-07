@@ -4,7 +4,7 @@ using Abstractions.Common.Interfaces;
 
 namespace Abstractions.MoreAbstract.Calculations
 {
-    public class ExponentiationCalculation : ICalculation
+    public class ExponentiationCalculation : ICalculation<double>
     {
         public async Task<double> CalculateAsync(double x, double y)
         {

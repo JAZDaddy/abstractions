@@ -16,7 +16,7 @@ namespace Abstractions.FullyConcrete
     /// a simple action based on a set of input parameters, and describe their parameter
     /// expectations with a Usage method.
     /// </summary>
-    public class AppCommand : IAppCommand
+    public class AppCommand : IAppCommand<double>
     {
         /// <summary>
         /// Exec the specified args.
@@ -47,18 +47,11 @@ namespace Abstractions.FullyConcrete
                 }
             }
 
-            // load up a list of values
-            var itemList = new List<(double x, double y)>();
+            // process the values
             foreach (var item in resultObject.data)
             {
-                itemList.Add((item.x, item.y));
-            }
-
-            // process the values
-            foreach (var item in itemList)
-            {
-                var doubleResult = await Task.Run(() => item.x + item.y);
-                sb.AppendLine($"The result of {item.x} + {item.y} = {doubleResult}.");
+                var result = await Task.Run(() => item.x + item.y);
+                sb.AppendLine($"The result of {item.x} + {item.y} = {result}.");
             }
 
             // return the results as a string

@@ -10,7 +10,7 @@ namespace Abstractions.MultipleFullyConcrete
     /// <summary>
     /// Divide app command.
     /// </summary>
-    public class DivideAppCommand : IAppCommand
+    public class DivideAppCommand : IAppCommand<double>
     {
         /// <summary>
         /// Exec the specified args.
