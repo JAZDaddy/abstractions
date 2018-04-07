@@ -10,7 +10,7 @@ namespace Abstractions.MultipleFullyConcrete
     /// <summary>
     /// Multiply app command.
     /// </summary>
-    public class MultiplyAppCommand : IAppCommand<double>
+    public class MultiplyAppCommand : IAppCommand
     {
         /// <summary>
         /// Exec the specified args.

@@ -8,7 +8,7 @@ namespace Abstractions
     {
         static async Task Main(string[] args)
         {
-            var appCommands = new Abstractions.Common.Interfaces.IAppCommand<double>[] {
+            var appCommands = new Abstractions.Common.Interfaces.IAppCommand[] {
                 #region FullyConcrete
                 // Our first implementation: very purpose-built
                 new Abstractions.FullyConcrete.AppCommand(),
@@ -49,7 +49,7 @@ namespace Abstractions
 
                 if (int.TryParse(input, out var menuSelection))
                 {
-                    IAppCommand<double> appCommand = null;
+                    IAppCommand appCommand = null;
 
                     if (menuSelection > 0 && menuSelection < appCommands.Length + 1)
                     {
