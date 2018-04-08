@@ -59,7 +59,7 @@ namespace Abstractions.DI
                 new TypedParameter(typeof(string), resourceId));
 
             // You must pass the ICalculation to Resolve, since there is more than one type register to resolve to the ICalculation.
-            // The 
+            // TODO: Matt Zion, did you want to say something else here?
             var appCommand = scope.Resolve<IAppCommand<T>>(
                 new TypedParameter(typeof(ICalculation<T>), calculation),
                 new TypedParameter(typeof(IPairwiseFileProvider<T>), provider)
